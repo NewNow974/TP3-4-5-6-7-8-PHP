@@ -458,6 +458,7 @@ session_destroy();
 
 
 
+
              print_r($_SESSION['names']);
              print_r($_SESSION['Lnames']);
              print_r($_SESSION['note']);
