@@ -3,39 +3,22 @@
 
 class Formulaire
 {
-    private $html="";
-    private $interieur="";
-    function __construct($nom_Fichier, $methodeEnvoie) {
-
-        $this->html= "<form action=$nom_Fichier method=$methodeEnvoie>$this->interieur</form>";
-    }
-
-    function ajouterzonetexte()
+    private $html = "";
+    private $interieur = "";
+    function __construct($fichier, $method)
     {
-        $this->interieur.="<input type='text'name='nom6'/>";
+        $this->html .= "<form method='$method' action='$fichier'>";
     }
-
-    function ajouterbouton()
-    {
-        $this->interieur.="<input type='submit' value='Enregister'/>";
+    function ajouterzonetexte($text){
+        $this->html .= $text." <input type='text'name='nom6'/><br><br>";
     }
-
-    function getform()
-    {
-        echo $this->html;
+    function ajouterbouton(){
+        $this->html .= "<button>Cliquez ici</button>";
     }
-
-    function __destruct(){
-        echo "Fin\n";
+    function getform(){
+        return $this->html . "</form>";
     }
-
 }
-
-
-$p1= new Formulaire("fichier.php", "post");
-$p1->ajouterzonetexte();
-$p1->ajouterzonetexte();
-$p1->ajouterbouton();
 
 
 
