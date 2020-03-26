@@ -3,7 +3,7 @@
 
 class Formulaire
 {
-    private $html = "";
+    protected $html = "";
     private $interieur = "";
     function __construct($fichier, $method)
     {
@@ -13,12 +13,13 @@ class Formulaire
         $this->html .= $text." <input type='text'name='nom6'/><br><br>";
     }
     function ajouterbouton(){
-        $this->html .= "<button>Cliquez ici</button>";
+        $this->html .= "<button>Cliquez ici</button><br>";
     }
     function getform(){
         return $this->html . "</form>";
     }
 }
+
 
 
 

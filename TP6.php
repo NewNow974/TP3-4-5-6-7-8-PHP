@@ -32,7 +32,7 @@ class equipe
         self::$nombreEquipe++;
     }
     function __destruct(){
-        echo "Fin\n";
+        echo "\n";
     }
     function display() {
         echo "\nL'équipe ".$this->nom." à ".$this->nombreTitre." titres. ". equipe::message.self::$nombreEquipe." !\n";
@@ -66,7 +66,7 @@ $p4=new equipe("Lyon", 14);
     Mail : <input type="text" name="mail"/>
     <br><br>
     Age : <select name="age">
-        <option value="">--Age--</option>
+        <option value="--Age--">--Age--</option>
         <option value="0-20">0-20</option>
         <option value="20-40">24-40</option>
         <option value="41-60">41-60</option>
@@ -87,7 +87,7 @@ class FormulaireRecup{
     private $prenom;
     private $mail;
     private $age;
-    private $genre;
+    public $genre;
     function __construct()
     {
         $this->nom=$_POST['nom'];
@@ -106,6 +106,7 @@ class FormulaireRecup{
 
 if(!empty($_POST['nom'])&&!empty($_POST['prenom'])&&!empty($_POST['button'])) {
     $test=new FormulaireRecup();
+    echo $test->genre;
     $test->display();
 }
 
