@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="Anselmet" uuid="994bcaec-ec0c-4c9d-8b2c-c00d5269ca91">
-      <driver-ref>sqlite.xerial</driver-ref>
+    <data-source source="LOCAL" name="PostgreSQL - citations@localhost" uuid="a9d0ab05-2969-4f12-89fb-a59a6737d28c">
+      <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\Anselmet\Desktop\phpCIR2\tp1\Anselmet.phd</jdbc-url>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/citations</jdbc-url>
     </data-source>
   </component>
 </project>
