@@ -36,27 +36,46 @@ echo "Start connexion !<br><br>";
 $base = 'pgsql:dbname=citations;host=localhost;port=5432';
 $user = 'postgres';
 $password = 'azerty123';
-$dbh=connexpdo($base, $user, $password);
+$db=connexpdo($base, $user, $password);
 
+$nbr_citations = 0;
 
-echo "<h1>La citation du jour</h1><br><hr>";
-$query = 'SELECT count(*)  FROM citation';
-$sth = $dbh->query($query);
-$sth->execute();
-$result=$sth->fetchAll();
+echo '<div class="container col-sm-9 jumbotron" ><h1>La citation du jour</h1><hr>';
 
-foreach($result as $data)
-{
-    echo "Il y a <b>$data[0]</b> citations répertoriées.";
+$query0 = "SELECT phrase FROM citation";
+$nbr = $db->query($query0);
+foreach ($nbr as $data) {
+    $nbr_citations++;
 }
-echo "Et voici l'une d'entre elles qui est générée aléatoirement :<br>";
-$var = random_int(0, $data[0]);
+$r=rand (1, $nbr_citations);
 
-$query = 'SELECT id, phrase  FROM citation';
-$sth = $dbh->query($query);
-$sth->execute();
-$result=$sth->fetchAll();
 
+echo '<p>Il y a <strong>'. $nbr_citations .' </strong> citations répertoriées.</p>';
+echo "<p>Et voici l'une d'entre elles qui est générée aléatoirement : </p>";
+
+
+//Citation de la BDD
+$query1 = "SELECT phrase, auteurid, siecleid FROM citation WHERE id = ".$r;
+$citation = $db->query($query1);
+foreach ($citation as $data){
+    echo '<p><strong>'.$data['phrase'].'</strong></p>';
+    $auteurid = $data['auteurid'];
+    $siecleid = $data['siecleid'];
+}
+
+//Auteur de la citation
+$query2= "SELECT nom, prenom FROM auteur WHERE id =". $auteurid;
+$auteur = $db->query($query2);
+foreach ($auteur as $data){
+    echo "<p><i>". $data['prenom'] ." ". $data['nom'] . "</i> ";
+}
+
+//Siècles de la BDD
+$query3 = "SELECT numero FROM siecle WHERE id=".$siecleid;
+$siecle = $db->query($query3);
+foreach ($siecle as $data){
+    echo $data['numero'] . "ème siècle </></p></div></body></html>";
+}
 ?>
 
 
